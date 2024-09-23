@@ -19,7 +19,7 @@
 
     <div class="cadastrar" id="cadastrar-calopisita">
         <p>Ola, digite o nome, sexo, idade, e mutação da sua calopisita</p>
-        <form action="">
+        <form action="{{ url_for('CadastrarCalopisita') }}">
             <label for="nome">Nome:</label><br>
             <input type="text" id="nome" name="nome" required><br><br>
 
