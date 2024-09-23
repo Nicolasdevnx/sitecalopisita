@@ -1,5 +1,5 @@
-from flask import Flask , request
-from flask import render_template
+from flask import Flask, flash, redirect , request, url_for
+from flask import render_template 
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
@@ -34,7 +34,11 @@ def CadastrarCalopisita():
     db.session.add(novacalopisita)
     db.session.commit()
 
-    return f"cadastrada com {nome} sucesso"
+    # Adiciona uma mensagem de sucesso
+    flash(f"Calopsita {nome} cadastrada com sucesso!")
+
+    # Redireciona para a página inicial
+    return redirect(url_for('index'))
 @app.route("/usuarios/<nicolas>")
 def usuarios(nicolas):
     return render_template("usuarios.html", nicolas=nicolas)
