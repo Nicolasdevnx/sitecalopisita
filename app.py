@@ -34,7 +34,7 @@ def CadastrarCalopisita():
     db.session.add(novacalopisita)
     db.session.commit()
 
-    return print(f"cadastrada com {nome} sucesso")
+    return f"cadastrada com {nome} sucesso"
 @app.route("/usuarios/<nicolas>")
 def usuarios(nicolas):
     return render_template("usuarios.html", nicolas=nicolas)
