@@ -36,7 +36,7 @@ def CadastrarCalopisita():
     db.session.commit()
 
     flash(f"Calopsita {nome} cadastrada com sucesso!")
-    return redirect(url_for('index'))
+    return redirect(url_for('index.html'))
 
 @app.route("/usuarios/<nicolas>")
 def usuarios(nicolas):
