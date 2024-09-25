@@ -1,8 +1,11 @@
 from flask import Flask, flash, redirect, request, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
-
+import logging
+import secrets
+logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta'  # Adicione uma chave secreta para o flash
+app.secret_key = secrets.token_hex(32)  # Adicione uma chave secreta para o flash
+print(app.secret_key)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///calopsitas.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
