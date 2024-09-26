@@ -8,7 +8,7 @@ app.secret_key = secrets.token_hex(32)  # Adicione uma chave secreta para o flas
 print(app.secret_key)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///calopsitas.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+#
 db = SQLAlchemy(app)
 
 class Calopisita(db.Model):
