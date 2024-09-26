@@ -35,8 +35,9 @@ def CadastrarCalopisita():
     db.session.add(nova_calopisita)
     db.session.commit()
 
-    flash(f"Calopsita {nome} cadastrada com sucesso!")
-    return redirect(url_for('index.html'))
+    # Passando a mensagem diretamente ao template
+    mensagem = f"Calopsita {nome} cadastrada com sucesso!"
+    return render_template('index.html', mensagem=mensagem)
 
 @app.route("/usuarios/<nicolas>")
 def usuarios(nicolas):

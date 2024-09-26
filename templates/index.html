@@ -7,15 +7,15 @@
     <title>HomePage</title>
 </head>
 <body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
+    
+
+    {% if mensagem %}
         <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
+            <li>{{ mensagem }}</li>
         </ul>
     {% endif %}
-{% endwith %}
+
+
 
     <div class="cadastrar" id="cadastrar-calopisita">
         <p>Ola, digite o nome, sexo, idade, e mutação da sua calopisita</p>
