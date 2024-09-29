@@ -37,7 +37,7 @@ def CadastrarCalopisita():
 
     # Passando a mensagem diretamente ao template
     mensagem = f"Calopsita {nome} cadastrada com sucesso!"
-    return render_template('cada.html', mensagem=mensagem)
+    return render_template('index.html', mensagem=mensagem)
 
 @app.route("/usuarios/<nicolas>")
 def usuarios(nicolas):
