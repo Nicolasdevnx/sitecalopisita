@@ -1,0 +1,53 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.parallax {
+    background-image: url('images/Foto.png');
+    height: 500px; /* Altura do primeiro parallax */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2 {
+    background-image: url('images/calopsitaportal-30970425.jpg'); /* URL da nova imagem */
+    height: 500px; /* Altura do segundo parallax */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.conteudo {
+    height: 1000px; /* Exemplo para rolar a página */
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.oi {
+    position: fixed; /* Fixa o elemento na janela */
+    left: 20px; /* Um pouco afastado da borda esquerda */
+    top: 20px; /* Um pouco abaixo da borda superior */
+    padding: 20px;
+    background-color: blue;
+    text-align: right;
+    color: white;
+}
+
+.conteudo-posterior {
+    background-color: white; /* Fundo branco para o conteúdo abaixo do parallax */
+    padding: 20px;
+    text-align: center;
+    font-size: 30px; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+#navbar {
+    background-color: gray; /* Exemplo de cor do rodapé */
+    padding: 10px;
+    text-align: center;
+}

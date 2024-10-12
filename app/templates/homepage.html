@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina inicial</title>
+</head>
+<body>
+    
+    <div id="apresentação" class="oi"><p>Ola seja bem vindo a nosso servisso</p></div>
+    <!--<div id="caixa-de-cadastro-e-login" class="login"> 
+        <form action="{{ url_for('HomePage') }}" method="post">
+        
+        </form>
+    
+    </div>
+    -->
+    <div class="parallax"></div>
+
+<div class="conteudo">
+    <h1>Conteúdo da Página</h1>
+    <p>Esperimente o melhor programa genetico aliado varias opções de compra.</p>
+    <p>Esperimente faça login compre e aproveite.</p>
+</div>
+
+<div style="height: 10px;"></div>
+<div class="parallax2"></div>
+
+<div class="conteudo-posterior">
+    <form action="{{ url_for('index') }}" method="post">
+        <label for="Nome">Nome:</label>
+        <input type="text" id="nome" nome="nome" required>
+
+        <label for="Senha">Senha:</label>
+        <input type="text" id="senha" senha="senha">
+
+        <input type="submit" value="Entrar">
+    </form>
+</div>
+
+    <div id="navbar" class="rodape">CalopGen</div>
+</body>
+</html>
