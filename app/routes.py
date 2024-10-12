@@ -7,11 +7,26 @@ from .models import Calopisita, Usuarios
 def HomePage():
     return render_template("homepage.html")
 
-@app.route("/calopsita")
+@app.route("/calopsita", methods=["GET", "POST"])  # Adicionando 'POST' aqui
 def index():
+    if request.method == "POST":
+        # Lógica para lidar com o login
+        nome = request.form['nome']
+        senha = request.form['senha']
+        
+        # Aqui você deve verificar se o usuário existe e se a senha está correta
+        # Exemplo de verificação (isso é apenas um exemplo, você deve substituir por sua lógica)
+        usuario = Usuarios.query.filter_by(nome=nome).first()
+        if usuario and usuario.senha == senha:  # Verifica se a senha está correta
+            flash(f'Bem-vindo, {nome}!', 'success')
+            return redirect(url_for('Dashboard'))  # Redireciona para a página inicial após login
+        else:
+            flash('Nome de usuário ou senha incorretos', 'error')
+
     return render_template("index.html")
 
-@app.route("/cadastrar-calopisita", methods=["POST"])
+
+@app.route("/cadastrar-calopsita", methods=["POST"])
 def CadastrarCalopisita():
     nome = request.form['nome']
     sexo = request.form['sexo']
@@ -47,3 +62,8 @@ def CadastrarUsuarios():
         return redirect(url_for('index'))
 
     return render_template('cadastrar_usuario.html')
+
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')

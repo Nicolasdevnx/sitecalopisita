@@ -7,7 +7,13 @@
     <title>Pagina inicial</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <a href="{{ url_for('HomePage') }}">Home</a>
+            <a href="{{ url_for('index') }}">Cadastrar Calopsita</a>
+            <a href="{{ url_for('CadastrarUsuarios') }}">Cadastrar Usuarios</a>
+        </nav>
+    </header>    
     <div id="apresentação" class="oi"><p>Ola seja bem vindo a nosso servisso</p></div>
     <!--<div id="caixa-de-cadastro-e-login" class="login"> 
         <form action="{{ url_for('HomePage') }}" method="post">
@@ -22,22 +28,23 @@
     <h1>Conteúdo da Página</h1>
     <p>Esperimente o melhor programa genetico aliado varias opções de compra.</p>
     <p>Esperimente faça login compre e aproveite.</p>
+    <p>Venha o login é logo baixo abaixo</p>
 </div>
 
 <div style="height: 10px;"></div>
 <div class="parallax2"></div>
-
 <div class="conteudo-posterior">
     <form action="{{ url_for('index') }}" method="post">
-        <label for="Nome">Nome:</label>
-        <input type="text" id="nome" nome="nome" required>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
-        <label for="Senha">Senha:</label>
-        <input type="text" id="senha" senha="senha">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
 
         <input type="submit" value="Entrar">
     </form>
 </div>
+
 
     <div id="navbar" class="rodape">CalopGen</div>
 </body>

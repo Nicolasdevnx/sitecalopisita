@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
-</head>
-<body>
-    <h1>Cadastro de Usuário</h1>
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Cadastrar Usuario</h1>
     <form action="{{ url_for('CadastrarUsuarios') }}" method="POST">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
@@ -32,5 +27,4 @@
             </ul>
         {% endif %}
     {% endwith %}
-</body>
-</html>
+{% endblock %}

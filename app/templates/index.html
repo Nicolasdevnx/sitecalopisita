@@ -1,42 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Calopsita{% endblock %}
+
+{% block content %}
+    <h1>Cadastrar Calopsita</h1>
+    <form method="POST" action="{{ url_for('CadastrarCalopisita') }}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo">
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
+        </select>
+        
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required>
+        
+        <label for="mutacao">Mutação:</label>
+        <input type="text" id="mutacao" name="mutacao" required>
+        
+        <button type="submit">Cadastrar</button>
+    </form>
     
-
-    {% if mensagem %}
-        <ul>
-            <li>{{ mensagem }}</li>
-        </ul>
-    {% endif %}
-
-
-
-    <div class="cadastrar" id="cadastrar-calopisita">
-        <p>Ola, digite o nome, sexo, idade, e mutação da sua calopisita</p>
-        <form action="{{ url_for('CadastrarCalopisita') }}" method="post">
-            <label for="nome">Nome:</label><br>
-            <input type="text" id="nome" name="nome" required><br><br>
-
-            <label for="sexo">Sexo:</label><br>
-            <select name="sexo" id="sexo" required>
-                <option value="macho">Macho</option>
-                <option value="femea">Femea</option>
-            </select><br><br>
-
-            <label for="idade">Idade</label><br>
-            <input type="number" name="idade" id="idade" required><br><br>
-
-            <label for="mutacao">Mutação</label>
-            <input type="text" name="mutacao" id="mutacao" required><br><br>
-
-            <input type="submit" value="Cadastrar calopisita">
-        </form>
-    </div>
-</body>
-</html>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+{% endblock %}

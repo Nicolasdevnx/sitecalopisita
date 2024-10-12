@@ -3,8 +3,29 @@ body, html {
     margin: 0;
 }
 
+header {
+    text-align: center; /* Centraliza o texto, se necessário */
+}
+
+header nav {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    background-color: gray; /* Cor de fundo da navbar */
+    padding: 10px; /* Espaçamento interno da navbar */
+}
+
+header nav a {
+    color: white; /* Cor do texto dos links */
+    text-decoration: none; /* Remove sublinhado */
+    padding: 10px; /* Espaçamento interno dos links */
+}
+
+header nav a:hover {
+    background-color: darkgray; /* Cor ao passar o mouse sobre os links */
+}
+
 .parallax {
-    background-image: url('images/Foto.png');
+    background-image: url('images/2.png');
     height: 500px; /* Altura do primeiro parallax */
     background-attachment: fixed;
     background-position: center;
@@ -37,6 +58,7 @@ body, html {
     background-color: blue;
     text-align: right;
     color: white;
+    border-radius:10px;
 }
 
 .conteudo-posterior {
@@ -47,7 +69,7 @@ body, html {
 }
 
 #navbar {
-    background-color: gray; /* Exemplo de cor do rodapé */
+    background-color: gray; /* Cor do rodapé */
     padding: 10px;
     text-align: center;
 }
