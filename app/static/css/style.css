@@ -76,3 +76,19 @@ main {
     background-color: lightgrey; /* Cor de fundo do dashboard */
     text-align: center;
 }
+.conteiner {
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.arvore {
+    padding: 20px;
+    background-color: lightgray;
+    width: 340px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }

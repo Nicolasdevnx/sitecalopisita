@@ -19,7 +19,7 @@ def index():
         usuario = Usuarios.query.filter_by(nome=nome).first()
         if usuario and usuario.senha == senha:  # Verifica se a senha está correta
             flash(f'Bem-vindo, {nome}!', 'success')
-            return redirect(url_for('Dashboard'))  # Redireciona para a página inicial após login
+            return redirect(url_for('dashboard'))  # Redireciona para a página inicial após login
         else:
             flash('Nome de usuário ou senha incorretos', 'error')
 
