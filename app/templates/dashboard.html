@@ -1,32 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard - Projeto Calopsita</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
         <nav>
-            <a href="{{ url_for('HomePage') }}">Home</a>
-            <a href="{{ url_for('index') }}">Cadastrar Calopsita</a>
-            <a href="{{ url_for('CadastrarUsuarios') }}">Cadastrar Usuários</a>
-            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('cadastro_calopsita') }}">Cadastrar Calopsita</a></li>
+                <li><a href="{{ url_for('cadastro_usuario') }}">Cadastrar Usuário</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
+            </ul>
         </nav>
     </header>
+
     <main>
-        <h1>Dashboard</h1>
-        <p>Bem-vindo ao seu dashboard!</p>
-        <!-- Aqui você pode adicionar mais informações do seu projeto -->
+        <h1>Dashboard do Projeto Calopsita</h1>
+        
+        <section id="resumo">
+            <h2>Resumo</h2>
+            <div class="card">
+                <p>Total de Calopsitas: <span id="total-calopsitas">0</span></p>
+            </div>
+            <div class="card">
+                <p>Total de Usuários: <span id="total-usuarios">0</span></p>
+            </div>
+        </section>
+
+        <section id="ultimas-calopsitas">
+            <h2>Últimas Calopsitas Cadastradas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Cor</th>
+                        <th>Data de Cadastro</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-calopsitas">
+                    <!-- Aqui serão inseridas as linhas com os dados das calopsitas -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="arvore-genealogica">
+            <h2>Árvore Genealógica</h2>
+            <img src="{{ url_for('static', filename='images/arvore_genealogica.png') }}" alt="Árvore Genealógica das Calopsitas">
+        </section>
+
+        <section id="estatisticas">
+            <h2>Estatísticas</h2>
+            <div id="grafico-cores">
+                <!-- Aqui será inserido um gráfico de cores das calopsitas -->
+            </div>
+            <div id="grafico-idades">
+                <!-- Aqui será inserido um gráfico de idades das calopsitas -->
+            </div>
+        </section>
     </main>
-    <div class="conteiner">
-        <div class="arvore">
-            <p>Venha ver a arvore genealogica de seu pantel</p>
-            <img src="" alt="">
-        </div>
-    </div>
-    
-    <footer><p>&copy; 2024 - Calopsitas Project</p></footer>
+
+    <footer>
+        <p>&copy; 2023 Projeto Calopsita. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>
