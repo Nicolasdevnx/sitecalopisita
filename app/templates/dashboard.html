@@ -21,18 +21,25 @@
     <main>
         <h1>Dashboard do Projeto Calopsita</h1>
         
+        {% if error %}
+        <div class="error-message">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+        
         <section id="resumo">
             <h2>Resumo</h2>
             <div class="card">
-                <p>Total de Calopsitas: <span id="total-calopsitas">0</span></p>
+                <p>Total de Calopsitas: <span id="total-calopsitas">{% if total_calopsitas %}{{ total_calopsitas }}{% else %}0{% endif %}</span></p>
             </div>
             <div class="card">
-                <p>Total de Usuários: <span id="total-usuarios">0</span></p>
+                <p>Total de Usuários: <span id="total-usuarios">{% if total_usuarios %}{{ total_usuarios }}{% else %}0{% endif %}</span></p>
             </div>
         </section>
 
         <section id="ultimas-calopsitas">
             <h2>Últimas Calopsitas Cadastradas</h2>
+            {% if calopsitas %}
             <table>
                 <thead>
                     <tr>
@@ -43,29 +50,34 @@
                     </tr>
                 </thead>
                 <tbody id="lista-calopsitas">
-                    <!-- Aqui serão inseridas as linhas com os dados das calopsitas -->
+                    {% for calopsita in calopsitas %}
+                    <tr>
+                        <td>{{ calopsita.nome }}</td>
+                        <td>{{ calopsita.idade }}</td>
+                        <td>{{ calopsita.cor }}</td>
+                        <td>{{ calopsita.data_cadastro.strftime('%d/%m/%Y') }}</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
-        </section>
-
-        <section id="arvore-genealogica">
-            <h2>Árvore Genealógica</h2>
-            <img src="{{ url_for('static', filename='images/arvore_genealogica.png') }}" alt="Árvore Genealógica das Calopsitas">
+            {% else %}
+            <p>Nenhuma calopsita cadastrada ainda.</p>
+            {% endif %}
         </section>
 
         <section id="estatisticas">
             <h2>Estatísticas</h2>
             <div id="grafico-cores">
-                <!-- Aqui será inserido um gráfico de cores das calopsitas -->
+                <!-- O gráfico será carregado via JavaScript -->
             </div>
             <div id="grafico-idades">
-                <!-- Aqui será inserido um gráfico de idades das calopsitas -->
+                <!-- O gráfico será carregado via JavaScript -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Projeto Calopsita. Todos os direitos reservados.</p>
+        <p>&copy; {% now 'Y' %} Projeto Calopsita. Todos os direitos reservados.</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>

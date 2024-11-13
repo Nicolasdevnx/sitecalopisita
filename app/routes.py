@@ -1,25 +1,24 @@
 # app/routes.py
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify
 from . import app, db
 from .models import Calopisita, Usuarios
+from flask_login import login_required
+from datetime import datetime
 
 @app.route("/")
 def HomePage():
     return render_template("homepage.html")
 
-@app.route("/calopsita", methods=["GET", "POST"])  # Adicionando 'POST' aqui
+@app.route("/calopsita", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        # Lógica para lidar com o login
         nome = request.form['nome']
         senha = request.form['senha']
         
-        # Aqui você deve verificar se o usuário existe e se a senha está correta
-        # Exemplo de verificação (isso é apenas um exemplo, você deve substituir por sua lógica)
         usuario = Usuarios.query.filter_by(nome=nome).first()
-        if usuario and usuario.senha == senha:  # Verifica se a senha está correta
+        if usuario and usuario.senha == senha:
             flash(f'Bem-vindo, {nome}!', 'success')
-            return redirect(url_for('dashboard'))  # Redireciona para a página inicial após login
+            return redirect(url_for('dashboard'))
         else:
             flash('Nome de usuário ou senha incorretos', 'error')
 
@@ -63,7 +62,21 @@ def CadastrarUsuarios():
 
     return render_template('cadastrar_usuario.html')
 
-
 @app.route('/dashboard')
+@login_required
 def dashboard():
-    return render_template('dashboard.html')
+    try:
+        calopsitas = Calopisita.query.order_by(Calopisita.id.desc()).limit(10).all()
+        total_calopsitas = Calopisita.query.count()
+        total_usuarios = Usuarios.query.count()
+
+        return render_template('dashboard.html',
+                             calopsitas=calopsitas,
+                             total_calopsitas=total_calopsitas,
+                             total_usuarios=total_usuarios)
+    except Exception as e:
+        return render_template('dashboard.html', 
+                             error="Erro ao carregar o dashboard: " + str(e),
+                             calopsitas=[],
+                             total_calopsitas=0,
+                             total_usuarios=0)
